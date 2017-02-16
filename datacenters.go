@@ -79,7 +79,7 @@ func createDatacenterHandler(c echo.Context) (err error) {
 
 	err = d.Validate()
 	if err != nil {
-		return ErrBadReqBody
+		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
 	}
 
 	d.GroupID = au.GroupID
